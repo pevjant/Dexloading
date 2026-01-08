@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Gradle
+.gradle/
+build/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Local configuration
+local.properties
+
+# Personal tools
+.beads/
+.claude/
+
+# Generated files
+.externalNativeBuild
+.cxx/

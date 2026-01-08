@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Main App Colors -->
+    <color name="primary">#FF6200EE</color>
+    <color name="primary_dark">#FF3700B3</color>
+    <color name="accent">#FF03DAC5</color>
+
+    <!-- Display Colors -->
+    <color name="sample_red">#FFFF5722</color>
+    <color name="sample_green">#FF4CAF50</color>
+    <color name="sample_blue">#FF2196F3</color>
+    <color name="sample_yellow">#FFFFEB3B</color>
+
+    <!-- Background -->
+    <color name="background_light">#FFF5F5F5</color>
+    <color name="card_background">#FFFFFFFF</color>
+</resources>

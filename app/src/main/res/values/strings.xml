@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">DexLoadingTest</string>
+
+    <!-- Main Screen Strings -->
+    <string name="title_main">Dynamic Dex Loading Demo</string>
+    <string name="subtitle_main">앱 종료 없이 플러그인 업데이트</string>
+
+    <!-- Color Display Labels -->
+    <string name="label_colors">현재 앱 색상</string>
+    <string name="color_red">빨강</string>
+    <string name="color_green">초록</string>
+    <string name="color_blue">파랑</string>
+    <string name="color_yellow">노랑</string>
+
+    <!-- Info Strings -->
+    <string name="info_dex_loading">DexClassLoader를 사용하여\n런타임에 플러그인을 로드합니다.</string>
+    <string name="info_current_version">현재 버전: 1.0</string>
+
+    <!-- Button Labels -->
+    <string name="btn_load_plugin">플러그인 로드</string>
+    <string name="btn_refresh">새로고침</string>
+
+    <!-- Status Messages -->
+    <string name="status_ready">플러그인 로드 준비 완료</string>
+    <string name="status_loading">플러그인 로드 중…</string>
+    <string name="status_success">플러그인 로드 성공!</string>
+    <string name="status_error">플러그인 로드 실패</string>
+</resources>
