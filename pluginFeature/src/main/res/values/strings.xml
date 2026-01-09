@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dynamic Feature Module Title -->
+    <string name="title_plugin_feature">Plugin Feature</string>
+
+    <!-- Plugin Strings -->
+    <string name="plugin_name">Dynamic Plugin</string>
+    <string name="plugin_version">1.0.0</string>
+
+    <!-- Plugin UI Strings -->
+    <string name="plugin_title">플러그인에서 로드됨!</string>
+    <string name="plugin_subtitle">동적으로 로드된 새로운 UI</string>
+    <string name="plugin_description">이 UI는 앱 재시작 없이\nDexClassLoader를 통해 로드되었습니다.</string>
+
+    <!-- Plugin Color Labels -->
+    <string name="plugin_color_coral">코랄</string>
+    <string name="plugin_color_teal">틸</string>
+    <string name="plugin_color_indigo">인디고</string>
+    <string name="plugin_color_amber">앰버</string>
+
+    <!-- Plugin Feature Info -->
+    <string name="plugin_feature_1">새로운 색상 팔레트</string>
+    <string name="plugin_feature_2">새로운 문자열 리소스</string>
+    <string name="plugin_feature_3">Assets에서 이미지 로드</string>
+
+    <!-- Plugin Image Info -->
+    <string name="plugin_image_label">Assets에서 로드된 이미지:</string>
+    <string name="plugin_image_description">AssetManager를 통해 PNG 이미지를 로드합니다</string>
+</resources>

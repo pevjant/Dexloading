@@ -1,5 +1,6 @@
 package com.example.dexloadingtest
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,8 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.dexloadingtest.plugin.DynamicPluginLoader
 import com.example.dexloadingtest.plugin.PluginInterface
-import com.example.dexloadingtest.plugin.PluginLoader
 import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity() {
@@ -20,12 +21,13 @@ class MainActivity : AppCompatActivity() {
         private const val TAG = "MainActivity"
     }
 
-    private lateinit var pluginLoader: PluginLoader
+    private lateinit var pluginLoader: DynamicPluginLoader
     private lateinit var btnLoadPlugin: MaterialButton
     private lateinit var tvStatus: TextView
     private lateinit var pluginContainer: FrameLayout
 
     private var loadedPlugin: PluginInterface? = null
+    // GloballyDynamic handles resource loading automatically - no SplitCompat needed
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,15 +58,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initPluginLoader() {
-        pluginLoader = PluginLoader(this)
+        pluginLoader = DynamicPluginLoader(this)
 
-        // Check available plugins
-        val availablePlugins = pluginLoader.getAvailablePlugins()
-        Log.d(TAG, "Available plugins in assets: $availablePlugins")
+        // Check if module is installed
+        val isInstalled = pluginLoader.isModuleInstalled()
+        Log.d(TAG, "Plugin module installed: $isInstalled")
 
-        if (availablePlugins.isEmpty()) {
-            tvStatus.text = "플러그인 파일 없음 (assets/plugin.apk 필요)"
-            tvStatus.setTextColor(getColor(R.color.sample_red))
+        if (isInstalled) {
+            tvStatus.text = "플러그인 모듈 설치됨 - 로드 가능"
+            tvStatus.setTextColor(getColor(R.color.sample_green))
+        } else {
+            tvStatus.text = "플러그인 모듈 미설치 - 설치 필요"
+            tvStatus.setTextColor(getColor(R.color.sample_yellow))
         }
     }
 
@@ -79,32 +84,53 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadPlugin() {
+        if (!pluginLoader.isModuleInstalled()) {
+            // Need to install module first
+            tvStatus.text = "모듈 설치 중..."
+            tvStatus.setTextColor(getColor(R.color.sample_yellow))
+
+            pluginLoader.installModule(
+                onSuccess = {
+                    runOnUiThread {
+                        performPluginLoad()
+                    }
+                },
+                onFailure = { error ->
+                    runOnUiThread {
+                        tvStatus.text = "모듈 설치 실패: ${error.message}"
+                        tvStatus.setTextColor(getColor(R.color.sample_red))
+                        Log.e(TAG, "Module installation failed", error)
+                        Toast.makeText(this, "모듈 설치 실패: ${error.message}", Toast.LENGTH_LONG).show()
+                    }
+                }
+            )
+        } else {
+            performPluginLoad()
+        }
+    }
+
+    private fun performPluginLoad() {
         tvStatus.text = getString(R.string.status_loading)
         tvStatus.setTextColor(getColor(R.color.sample_yellow))
 
-        // Load plugin asynchronously to avoid blocking UI
-        Thread {
-            val result = pluginLoader.loadPluginFromAssets()
+        val result = pluginLoader.loadPlugin(this)
 
-            runOnUiThread {
-                result.fold(
-                    onSuccess = { plugin ->
-                        loadedPlugin = plugin
-                        showPluginUI(plugin)
-                        tvStatus.text = "${getString(R.string.status_success)} - ${plugin.getName()} v${plugin.getVersion()}"
-                        tvStatus.setTextColor(getColor(R.color.sample_green))
-                        btnLoadPlugin.text = "플러그인 언로드"
-                        Toast.makeText(this, "플러그인 로드 완료!", Toast.LENGTH_SHORT).show()
-                    },
-                    onFailure = { error ->
-                        tvStatus.text = "${getString(R.string.status_error)}: ${error.message}"
-                        tvStatus.setTextColor(getColor(R.color.sample_red))
-                        Log.e(TAG, "Plugin load failed", error)
-                        Toast.makeText(this, "플러그인 로드 실패: ${error.message}", Toast.LENGTH_LONG).show()
-                    }
-                )
+        result.fold(
+            onSuccess = { plugin ->
+                loadedPlugin = plugin
+                showPluginUI(plugin)
+                tvStatus.text = "${getString(R.string.status_success)} - ${plugin.getName()} v${plugin.getVersion()}"
+                tvStatus.setTextColor(getColor(R.color.sample_green))
+                btnLoadPlugin.text = "플러그인 언로드"
+                Toast.makeText(this, "플러그인 로드 완료!", Toast.LENGTH_SHORT).show()
+            },
+            onFailure = { error ->
+                tvStatus.text = "${getString(R.string.status_error)}: ${error.message}"
+                tvStatus.setTextColor(getColor(R.color.sample_red))
+                Log.e(TAG, "Plugin load failed", error)
+                Toast.makeText(this, "플러그인 로드 실패: ${error.message}", Toast.LENGTH_LONG).show()
             }
-        }.start()
+        )
     }
 
     private fun showPluginUI(plugin: PluginInterface) {
@@ -127,7 +153,6 @@ class MainActivity : AppCompatActivity() {
     private fun unloadPlugin() {
         loadedPlugin?.onDestroy()
         loadedPlugin = null
-        pluginLoader.unloadPlugin()
 
         pluginContainer.removeAllViews()
         pluginContainer.visibility = View.GONE

@@ -22,5 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "DexLoadingTest"
 include(":app")
 include(":shared")
-include(":plugin")
+include(":pluginFeature")
  
