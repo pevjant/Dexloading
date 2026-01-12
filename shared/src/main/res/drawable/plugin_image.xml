@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Background -->
+    <path
+        android:fillColor="#E8F5E9"
+        android:pathData="M0,0h100v100h-100z"/>
+
+    <!-- Plugin Icon - Puzzle Piece -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M70,25 L70,35 C70,38 72,40 75,40 C78,40 80,38 80,35 L80,25 L90,25 L90,45 C90,48 88,50 85,50 C82,50 80,48 80,45 L80,42 L70,42 L70,75 L37,75 L37,65 C37,62 35,60 32,60 C29,60 27,62 27,65 L27,75 L10,75 L10,42 L20,42 L20,45 C20,48 22,50 25,50 C28,50 30,48 30,45 L30,25 L70,25 Z"/>
+
+    <!-- Highlight -->
+    <path
+        android:fillColor="#81C784"
+        android:pathData="M35,30 L65,30 L65,40 L35,40 Z"/>
+
+    <!-- Text: PLUGIN -->
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M25,85 L25,90 L28,90 L28,88 L27,88 L27,85 Z"/>
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M30,85 L30,90 L32,90 L32,88 L33,88 L33,85 Z"/>
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M35,85 L35,90 L38,90 L38,89 L36,89 L36,85 Z"/>
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M40,85 L40,90 L42,90 L42,88 L43,88 L43,86 L42,86 L42,85 Z"/>
+    <path
+        android:fillColor="#2E7D32"
+        android:pathData="M45,85 L45,90 L48,90 L48,89 L46,89 L46,88 L48,88 L48,87 L46,87 L46,86 L48,86 L48,85 Z"/>
+</vector>

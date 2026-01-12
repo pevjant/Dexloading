@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/plugin_card_bg">
+
+    <!-- Header with gradient -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/plugin_gradient_bg"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvPluginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plugin_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tvPluginSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/plugin_subtitle"
+            android:textSize="14sp"
+            android:textColor="@android:color/white"
+            android:alpha="0.9" />
+    </LinearLayout>
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/tvPluginDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/plugin_description"
+        android:textSize="13sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp" />
+
+    <!-- Color Palette Section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/plugin_feature_1"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/plugin_primary_dark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!-- Coral -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/colorCoral"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/plugin_coral" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/plugin_color_coral"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Teal -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/colorTeal"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/plugin_teal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/plugin_color_teal"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Indigo -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/colorIndigo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/plugin_indigo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/plugin_color_indigo"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Amber -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <View
+                android:id="@+id/colorAmber"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/plugin_amber" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/plugin_color_amber"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Features List -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plugin_check_xml"
+            android:textSize="12sp"
+            android:textColor="@color/plugin_teal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/plugin_check_drawable"
+            android:textSize="12sp"
+            android:textColor="@color/plugin_teal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/plugin_check_colors"
+            android:textSize="12sp"
+            android:textColor="@color/plugin_teal" />
+    </LinearLayout>
+
+    <!-- Image Section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/plugin_image_label"
+        android:textSize="12sp"
+        android:textColor="@android:color/darker_gray" />
+
+    <ImageView
+        android:id="@+id/ivPluginImage"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitCenter"
+        android:background="@color/plugin_background"
+        android:contentDescription="@string/plugin_image_description" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/plugin_image_description"
+        android:textSize="10sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center" />
+
+</LinearLayout>
